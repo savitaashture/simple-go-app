@@ -10,7 +10,7 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
         fmt.Println("My first app")
 	fmt.Fprintf(w, "My first app with URL %s!", r.URL.Path[1:])
-	time.Sleep(240 * time.Second)
+	time.Sleep(60 * time.Second)
 }
 
 func main() {
