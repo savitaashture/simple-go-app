@@ -1,8 +1,7 @@
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: issuetest
-  namespace: test
+  name: envApp
 spec:
   template:
     spec:
