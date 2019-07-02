@@ -6,4 +6,7 @@ spec:
   template:
     spec:
       containers:
-      - image: github.com/savitaashture/simple-go-app 
+      - image: github.com/savitaashture/simple-go-app
+        env:
+        - name: TARGET
+          value: "v1"
