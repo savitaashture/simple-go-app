@@ -1,0 +1,10 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: issuetest
+  namespace: test
+spec:
+  template:
+    spec:
+      containers:
+      - image: github.com/savitaashture/simple-go-app 
