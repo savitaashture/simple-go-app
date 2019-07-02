@@ -1,20 +1,30 @@
 package main
 
 import (
-"fmt"
-"log"
-"net/http"
-	"time"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-        fmt.Println("My first app")
-	fmt.Fprintf(w, "My first app with URL %s!", r.URL.Path[1:])
-	time.Sleep(60 * time.Second)
+	log.Print("Hello world received a request.")
+	target := os.Getenv("TARGET")
+	if target == "" {
+		target = "World"
+	}
+	fmt.Fprintf(w, "Hello %s!\n", target)
 }
 
 func main() {
-        fmt.Println("Its coming herre")
+	log.Print("Hello world sample started.")
+
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
