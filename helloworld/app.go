@@ -7,19 +7,19 @@ import (
 	"os"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func envHandler(w http.ResponseWriter, r *http.Request) {
 	log.Print("Hello world received a request.")
 	target := os.Getenv("TARGET")
 	if target == "" {
-		target = "World"
+		target = "serving"
 	}
 	fmt.Fprintf(w, "Hello %s!\n", target)
 }
 
 func main() {
-	log.Print("Hello world sample started.")
+	log.Print("Hello world started.")
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", envHandler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
