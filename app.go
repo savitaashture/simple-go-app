@@ -15,6 +15,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
         fmt.Println("Its coming to test once before PR")
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/test", handler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
