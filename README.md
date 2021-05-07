@@ -1,3 +1,3 @@
-# simple-go-app1122
+# simple-go-app
 
-Testing
+Learning
