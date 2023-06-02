@@ -8,7 +8,7 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
         fmt.Println("My first app")
-	fmt.Fprintf(w, "My first app with URL %s!", r.URL.Path[1:])
+	fmt.Fprintf(w, "Welcome to KCD 2023")
 	//time.Sleep(60 * time.Second)
 }
 
