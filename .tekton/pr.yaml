@@ -1,0 +1,31 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: deploy-pipeline
+  annotations:
+    pipelinesascode.tekton.dev/on-comment: "^/deploy"
+    pipelinesascode.tekton.dev/on-event: "pull_request"
+
+    # The branch or tag we are targeting (ie: main, refs/tags/*)
+    pipelinesascode.tekton.dev/on-target-branch: "master"
+spec:
+  params:
+    - name: message
+      value: "Sample Message"
+  pipelineSpec:
+    params:
+    - description: Message
+      name: message
+      type: string
+    tasks:
+    - name: echo-sample-message
+      params:
+        - name: message
+          value: $(params.message)
+      taskSpec:
+        steps:
+          - name: echo-sample-message
+            image: registry.access.redhat.com/ubi8/ubi-minimal:8.2
+            script: |
+              echo -n $message
